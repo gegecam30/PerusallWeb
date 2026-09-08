@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perusall Smart Co-Pilot — Asistente Académico para Perusall</title>
+  <meta name="description" content="Extensión inteligente que analiza textos académicos, genera comentarios con citas APA nativas y simula lectura activa indetectable en Perusall.">
+
+  <!-- Favicon Oficial -->
+  <link rel="icon" type="image/png" href="assets/icon.png">
+
+  <!-- Tipografías de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Iconos FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Partículas Flotantes de Fondo -->
+  <div id="particles"></div>
+
+  <!-- Audio Ambiental y de Efectos -->
+  <audio id="bg-music" loop preload="auto"><source src="music/ambient.mp3" type="audio/mpeg"></audio>
+  <audio id="note-sound" preload="auto"><source src="music/bit.mp3" type="audio/mpeg"></audio>
+
+  <!-- ══════════════════════════════════════════
+       BARRA DE NAVEGACIÓN
+  ══════════════════════════════════════════ -->
+  <nav class="nav-header">
+    <div class="container">
+      <div class="nav-inner">
+        
+        <!-- Marca Alineada a la Izquierda -->
+        <a href="#" class="nav-brand-left">
+          <img src="assets/icon.png" alt="Icono" class="nav-logo-icon">
+          <span class="nav-brand-title">Perusall <span>Co-Pilot</span></span>
+          <span class="nav-badge-v2">v2.3 OFICIAL</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#planes" class="nav-link">Planes</a></li>
+          <li><a href="#capacidades" class="nav-link">Capacidades</a></li>
+          <li><a href="#politicas" class="nav-link">Términos y Políticas</a></li>
+          <li><a href="#faq" class="nav-link">Preguntas</a></li>
+        </ul>
+
+        <!-- Botón Ojo de Ender ("Descarga Ya") -->
+        <a href="https://chromewebstore.google.com" target="_blank" rel="noopener noreferrer" class="btn-ender-download chrome-store-link">
+          <img src="assets/eye_of_ender_hd.png" alt="Ender Eye" class="ender-eye-img">
+          <span>Descarga Ya</span>
+        </a>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       HERO MINIMALISTA & DINÁMICO
+  ══════════════════════════════════════════ -->
+  <header class="hero-wrapper">
+    <div class="container">
+
+      <!-- Caja Interactiva de Introducción (Estilo Myweb) -->
+      <div class="hero-intro-box">
+        <!-- Bloque Musical de Minecraft -->
+        <div class="note-block-container">
+          <span class="click-me-text">CLICK ME!</span>
+          <div id="note-block" class="note-block" title="¡Haz clic en el bloque musical!"></div>
+        </div>
+
+        <!-- Texto Animado con Glitch de Encantamiento -->
+        <div class="intro-text">
+          <span id="typed-text"></span><span class="cursor-blink"></span>
+        </div>
+
+        <!-- Sprite Animado Pixel Art -->
+        <div class="pixel-sprite"></div>
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="hero-cta-row">
+        <a href="#planes" class="btn-hero-plans">
+          <i class="fa-solid fa-cube"></i>
+          <span>Ver Planes y Tarifas</span>
+          <i class="fa-solid fa-arrow-down" style="font-size: 0.75rem;"></i>
+        </a>
+        <a href="https://chromewebstore.google.com" target="_blank" rel="noopener noreferrer" class="btn-hero-demo">
+          <img src="assets/eye_of_ender_hd.png" alt="Ender Eye" class="ender-eye-img" style="width: 18px; height: 18px;">
+          <span>Descargar Extensión</span>
+        </a>
+      </div>
+
+      <!-- Métricas Destacadas de Confianza -->
+      <div class="hero-trust-badges">
+        <div class="trust-badge-item">
+          <i class="fa-solid fa-shield-halved" style="color: #55ff55;"></i>
+          <span>100% Anti-Detección</span>
+        </div>
+        <div class="trust-badge-item">
+          <i class="fa-solid fa-quote-left" style="color: var(--cyan);"></i>
+          <span>Citas APA Nativas</span>
+        </div>
+        <div class="trust-badge-item">
+          <i class="fa-solid fa-bolt" style="color: #facc15;"></i>
+          <span>Activación Inmediata</span>
+        </div>
+        <div class="trust-badge-item">
+          <i class="fa-solid fa-graduation-cap" style="color: #c084fc;"></i>
+          <span>Meta 20/20 Garantizada</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN DE PLANES Y PRECIOS (EJE CENTRAL)
+  ══════════════════════════════════════════ -->
+  <section id="planes" class="section">
+    <div class="container">
+      
+      <div class="section-head">
+        <div class="section-eyebrow">Tarifas Oficiales</div>
+        <h2 class="section-title">Planes transparentes para cada etapa</h2>
+        <p class="section-desc">Sin suscripciones ocultas ni cobros automáticos. Adquieres tu licencia y la activas en 2 minutos.</p>
+
+        <!-- Selector de Facturación: Mensual (Inicio) vs Por Ciclo (Oferta 4 Meses) -->
+        <div class="billing-switcher-wrapper">
+          <button id="btn-bill-month" class="btn-bill-toggle active" type="button">
+            <i class="fa-regular fa-calendar"></i>
+            <span>Mensual</span>
+          </button>
+          <button id="btn-bill-cycle" class="btn-bill-toggle" type="button">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Por Ciclo (4 Meses)</span>
+            <span class="billing-pill-save">Ahorra hasta 25%</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Grid de los 3 Planes inyectados de forma segura por app.js -->
+      <div id="pricing-grid" class="pricing-cards-grid"></div>
+
+      <!-- Métodos de Pago Aceptados -->
+      <div id="payment-methods-strip" class="payment-methods-footer"></div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       CAPACIDADES DE LA HERRAMIENTA (01, 02, 03, 04)
+  ══════════════════════════════════════════ -->
+  <section id="capacidades" class="section" style="background-color: var(--bg-surface);">
+    <div class="container">
+      
+      <div class="section-head">
+        <div class="section-eyebrow">Capacidades del Modelo</div>
+        <h2 class="section-title">Ingeniería para la excelencia académica</h2>
+        <p class="section-desc">Diseñado para emular el comportamiento de un estudiante sobresaliente.</p>
+      </div>
+
+      <div id="capabilities-grid" class="capabilities-grid"></div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       TÉRMINOS Y POLÍTICAS (ESTILO CLAUDE)
+  ══════════════════════════════════════════ -->
+  <section id="politicas" class="section">
+    <div class="container container-narrow">
+      
+      <div class="section-head">
+        <div class="section-eyebrow">Transparencia Institucional</div>
+        <h2 class="section-title">Términos, Privacidad y Ética</h2>
+        <p class="section-desc">Soberanía de datos, procesamiento seguro en memoria y uso responsable de la IA.</p>
+      </div>
+
+      <div id="policies-tabs-nav" class="policies-tabs-nav"></div>
+      <div id="policy-card-view" class="policy-card-view"></div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PREGUNTAS FRECUENTES (FAQ)
+  ══════════════════════════════════════════ -->
+  <section id="faq" class="section" style="background-color: var(--bg-surface);">
+    <div class="container container-narrow">
+      
+      <div class="section-head">
+        <div class="section-eyebrow">Dudas Frecuentes</div>
+        <h2 class="section-title">Preguntas habituales</h2>
+        <p class="section-desc">Todo lo que necesitas saber sobre activación, compatibilidad y soporte.</p>
+      </div>
+
+      <div id="faq-list" class="faq-minimal-list"></div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER MINIMALISTA
+  ══════════════════════════════════════════ -->
+  <footer class="footer-minimal">
+    <div class="container">
+      
+      <div class="footer-columns">
+        <div class="footer-col-brand">
+          <h4>Perusall Smart Co-Pilot</h4>
+          <p>Herramienta tecnológica para el estudio dialógico universitario. Compatible con navegadores Chromium.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Producto</h5>
+          <ul class="footer-links-list">
+            <li><a href="#planes">Planes y Precios</a></li>
+            <li><a href="#capacidades">Capacidades</a></li>
+            <li><a href="#" class="chrome-store-link">Chrome Web Store</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Políticas</h5>
+          <ul class="footer-links-list">
+            <li><a href="#politicas">Términos de Servicio</a></li>
+            <li><a href="#politicas">Privacidad de Datos</a></li>
+            <li><a href="#politicas">Ética Académica</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <ul class="footer-links-list">
+            <li><a href="https://wa.me/51934033735" target="_blank" rel="noopener noreferrer">WhatsApp (+51 934 033 735)</a></li>
+            <li><a href="https://t.me/+kGDzj1dmtOs1MTdh" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+            <li><a href="https://discord.gg/JPHfryuMeY" target="_blank" rel="noopener noreferrer">Discord</a></li>
+            <li><a href="https://www.instagram.com/pebotlnx/" target="_blank" rel="noopener noreferrer">Instagram (@pebotlnx)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>© 2026 Perusall Smart Co-Pilot. Todos los derechos reservados.</span>
+        <div class="footer-status-pill">
+          <span class="status-dot"></span>
+          <span>Sistemas compatibles con Perusall v2.3</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════
+       MODAL DE ADQUISICIÓN / CONTACTO
+  ══════════════════════════════════════════ -->
+  <div id="purchase-modal" class="modal-overlay">
+    <div class="modal-box">
+      
+      <button id="btn-close-modal" class="btn-close-modal" type="button" title="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h3 class="modal-title">Adquirir Licencia</h3>
+      <p class="modal-subtitle">Atención directa para entrega inmediata de tu clave de acceso.</p>
+
+      <div class="modal-plan-summary-box">
+        <div>
+          <span style="font-size: 0.72rem; color: var(--text-tertiary); text-transform: uppercase; font-weight: 700;">Plan Seleccionado</span>
+          <div id="modal-plan-name" class="modal-plan-name">Plan Premium</div>
+        </div>
+        <div id="modal-plan-price" class="modal-plan-price">$ 19.99</div>
+      </div>
+
+      <div class="modal-accepted-strip">
+        <span class="modal-accepted-title"><i class="fa-solid fa-wallet"></i> Métodos de abono aceptados:</span>
+        <div class="modal-methods-pills">
+          <span class="m-chip m-yape"><img src="assets/yape.svg" alt="Yape" class="pay-asset-icon"> Yape</span>
+          <span class="m-chip m-plin"><img src="assets/plin.png" alt="Plin" class="pay-asset-icon"> Plin</span>
+          <span class="m-chip m-paypal"><img src="assets/paypal.svg" alt="PayPal" class="pay-asset-icon"> PayPal</span>
+          <span class="m-chip m-banco"><img src="assets/bank.svg" alt="Transferencia" class="pay-asset-icon"> Transferencia</span>
+        </div>
+      </div>
+
+      <div class="channels-list-title">Elige tu canal para coordinar entrega de tu key:</div>
+
+      <a id="modal-link-whatsapp" href="https://wa.me/51934033735" target="_blank" rel="noopener noreferrer" class="channel-link-card">
+        <div class="channel-card-left">
+          <i class="fa-brands fa-whatsapp channel-icon"></i>
+          <div>
+            <div class="channel-title">WhatsApp Oficial</div>
+            <div class="channel-handle">+51 934 033 735 • Yape / Plin / Transferencia bancaria</div>
+          </div>
+        </div>
+        <i class="fa-solid fa-arrow-right channel-arrow"></i>
+      </a>
+
+      <a id="modal-link-telegram" href="https://t.me/+kGDzj1dmtOs1MTdh" target="_blank" rel="noopener noreferrer" class="channel-link-card">
+        <div class="channel-card-left">
+          <i class="fa-brands fa-telegram channel-icon"></i>
+          <div>
+            <div class="channel-title">Telegram Directo</div>
+            <div class="channel-handle">Canal oficial de la comunidad • Soporte y activación</div>
+          </div>
+        </div>
+        <i class="fa-solid fa-arrow-right channel-arrow"></i>
+      </a>
+
+      <a id="modal-link-discord" href="https://discord.gg/JPHfryuMeY" target="_blank" rel="noopener noreferrer" class="channel-link-card">
+        <div class="channel-card-left">
+          <i class="fa-brands fa-discord channel-icon"></i>
+          <div>
+            <div class="channel-title">Servidor de Discord</div>
+            <div class="channel-handle">Apertura de tickets y soporte en comunidad</div>
+          </div>
+        </div>
+        <i class="fa-solid fa-arrow-right channel-arrow"></i>
+      </a>
+
+      <a id="modal-link-instagram" href="https://www.instagram.com/pebotlnx/" target="_blank" rel="noopener noreferrer" class="channel-link-card">
+        <div class="channel-card-left">
+          <i class="fa-brands fa-instagram channel-icon"></i>
+          <div>
+            <div class="channel-title">Instagram DM (@pebotlnx)</div>
+            <div class="channel-handle">Mensaje privado a la cuenta oficial</div>
+          </div>
+        </div>
+        <i class="fa-solid fa-arrow-right channel-arrow"></i>
+      </a>
+
+      <div class="modal-copy-footer">
+        <span>¿Deseas el mensaje de orden en tu portapapeles?</span>
+        <button id="btn-copy-order" class="btn-copy-fast" type="button">
+          <i class="fa-regular fa-copy"></i>
+          <span>Copiar</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notificación -->
+  <div id="toast-bar" class="toast-bar">
+    <i class="fa-solid fa-check" style="color: var(--accent-light);"></i>
+    <span id="toast-text">Mensaje copiado al portapapeles.</span>
+  </div>
+
+  <!-- Reproductor de Música Flotante (Ambiental) -->
+  <div class="music-wrapper">
+    <span class="music-credit">Ambient Chill • 8-Bit</span>
+    <button id="music-toggle" class="music-btn" title="Activar/Pausar Música">
+      <span id="music-icon">🔇</span>
+    </button>
+  </div>
+
+  <!-- Modal Secreto de los 50 Clics en Note Block -->
+  <div id="coupon-modal" class="coupon-modal-overlay">
+    <div class="coupon-modal-content">
+      <h3 class="coupon-modal-title">✨ ¡LOGRO DESBLOQUEADO! ✨</h3>
+      <p class="coupon-modal-text">¡Completaste 50 notas musicales! Aquí tienes un código de descuento especial para soporte:</p>
+      <div style="background: rgba(0, 229, 255, 0.1); border: 1px dashed var(--cyan); padding: 10px; border-radius: 6px; font-family: var(--font-mono); font-size: 1.15rem; font-weight: 700; color: var(--cyan); margin-bottom: 16px; letter-spacing: 2px;">NOTENINJA20</div>
+      <button id="btn-close-coupon" class="coupon-modal-btn">Reclamar y Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

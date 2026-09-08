@@ -1,0 +1,1558 @@
+/* ══════════════════════════════════════════════════════════════════
+   PERUSALL SMART CO-PILOT — TECH & MINECRAFT HYBRID SHOWCASE
+   Inspirado en Myweb: Fuente Galactic, Partículas, Note Block & Ojo de Ender
+   Paleta Disciplinada (Cyan Frío #00e5ff & Violeta #7c3aed)
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── FUENTE BASE AUTÉNTICA DE MINECRAFT ── */
+@font-face {
+  font-family: 'Minecraft';
+  src: url('../fonts/Minecraft.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ── FUENTE OFICIAL ENCANTAMIENTO MINECRAFT ── */
+@font-face {
+  font-family: 'Galactic';
+  src: url('../fonts/minecraft-enchantment.ttf') format('truetype');
+}
+
+:root {
+  /* Fondo y Superficies Oscuras */
+  --bg-dark: #050a0f;
+  --bg-surface: #0a111a;
+  --bg-card: #0f1826;
+  --bg-card-hover: #142133;
+  --border: #16263b;
+  --border-glow: rgba(0, 229, 255, 0.25);
+
+  /* Texto */
+  --text-main: #e6f6fa;
+  --text-muted: #8bb7c4;
+  --text-dim: #4d7280;
+
+  /* Acentos Controlados */
+  --cyan: #00e5ff;
+  --cyan-dark: #00838f;
+  --cyan-glow: rgba(0, 229, 255, 0.4);
+  --purple: #8b5cf6;
+  --purple-glow: rgba(139, 92, 246, 0.35);
+
+  /* Tipografías: Ultra-legibles, modernas y minimalistas con acentos Minecraft selectos */
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Outfit', 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-pixel: 'Minecraft', monospace;
+
+  --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── RESET Y BASE ── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 15% 40%, rgba(0, 229, 255, 0.03) 0%, transparent 60%),
+    radial-gradient(circle at 85% 20%, rgba(139, 92, 246, 0.03) 0%, transparent 60%);
+}
+
+::selection {
+  background: var(--cyan);
+  color: #050a0f;
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container-narrow {
+  max-width: 820px;
+}
+
+/* ── PARTÍCULAS FLOTANTES ── */
+#particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  background: var(--cyan);
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 8px 2px var(--cyan-glow);
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-100px) translateX(30px); opacity: 0; }
+}
+
+/* ── NAVBAR CON MARCA A LA IZQUIERDA Y OJO DE ENDER ── */
+.nav-header {
+  position: sticky;
+  top: 0;
+  background: rgba(5, 10, 15, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+/* Marca alineada totalmente a la izquierda */
+.nav-brand-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-main);
+}
+
+.nav-logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.nav-brand-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.nav-brand-title span {
+  color: var(--cyan);
+}
+
+.nav-badge-v2 {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--cyan);
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--cyan);
+}
+
+/* Botón Ojo de Ender ("Descarga Ya") */
+.btn-ender-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(0, 229, 255, 0.06);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  color: var(--text-main);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.15);
+  transition: var(--transition);
+}
+
+.btn-ender-download:hover {
+  background: rgba(0, 229, 255, 0.14);
+  border-color: var(--cyan);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.ender-eye-img {
+  width: 22px;
+  height: 22px;
+  image-rendering: pixelated;
+  animation: eyeSpinPulse 3.5s ease-in-out infinite;
+}
+
+@keyframes eyeSpinPulse {
+  0%, 100% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 4px var(--cyan)); }
+  50% { transform: rotate(180deg) scale(1.15); filter: drop-shadow(0 0 10px var(--cyan)); }
+}
+
+/* ── HERO MEJORADO & INTRO BOX CON TYPEWRITER ── */
+.hero-wrapper {
+  padding: 48px 0 54px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-main-title {
+  font-family: var(--font-heading);
+  font-size: 2.7rem;
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  color: #ffffff;
+}
+
+.highlight-cyan {
+  background: linear-gradient(135deg, #ffffff 0%, var(--cyan) 50%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.3));
+}
+
+/* Contenedor del Bloque Musical & Texto Animado */
+.hero-intro-box {
+  margin: 0 auto 32px;
+  max-width: 720px;
+  min-height: 84px;
+  background: rgba(0, 229, 255, 0.03);
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  border-radius: 12px;
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.02), 0 0 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+/* Bloque Musical de Minecraft a la Izquierda */
+.note-block-container {
+  position: absolute;
+  left: -90px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+}
+
+.click-me-text {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--cyan);
+  text-shadow: 0 0 8px var(--cyan-glow);
+  animation: bounceText 1.5s infinite;
+}
+
+.note-block {
+  width: 52px;
+  height: 52px;
+  background-image: url('../assets/note-block.png');
+  background-size: cover;
+  image-rendering: pixelated;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.note-block:hover {
+  filter: brightness(1.2);
+}
+
+.note-block.hit {
+  animation: blockJump 0.2s ease-out;
+}
+
+@keyframes blockJump {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes bounceText {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Sprite de píxeles animado */
+.pixel-sprite {
+  position: absolute;
+  right: -36px;
+  top: -24px;
+  width: 48px;
+  height: 48px;
+  background: url('../assets/sprite.png') left center;
+  background-size: auto 100%;
+  animation: playSprite 0.8s steps(4) infinite;
+  z-index: 5;
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.4));
+}
+
+@keyframes playSprite {
+  100% { background-position: -192px; }
+}
+
+/* Efecto de Escritura con Glitch de Encantamiento */
+.intro-text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #bdf2fb;
+  letter-spacing: 0.2px;
+}
+
+.is-enchanting {
+  font-family: 'Galactic', sans-serif !important;
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  color: var(--cyan) !important;
+  text-shadow: 0 0 10px var(--cyan) !important;
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  background: var(--cyan);
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 0.8s step-end infinite;
+  box-shadow: 0 0 8px var(--cyan);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Botones del Hero */
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.btn-hero-plans {
+  background: linear-gradient(135deg, var(--cyan-dark) 0%, var(--purple) 100%);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.25);
+  transition: var(--transition);
+}
+
+.btn-hero-plans:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.45);
+}
+
+.btn-hero-demo {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-hero-demo:hover {
+  border-color: var(--cyan);
+  background: var(--bg-card-hover);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   HERO TRUST BADGES & ASSETS DE MEDIOS DE PAGO
+   ══════════════════════════════════════════════════════════════════ */
+.hero-trust-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.trust-badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(13, 20, 31, 0.75);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.2px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition: var(--transition);
+}
+
+.trust-badge-item:hover {
+  border-color: rgba(0, 229, 255, 0.4);
+  color: var(--text-main);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 229, 255, 0.15);
+}
+
+/* Logos Oficiales en Chips y Pills */
+.payment-chip-logo {
+  height: 20px;
+  width: auto;
+  max-width: 44px;
+  object-fit: contain;
+  vertical-align: middle;
+  border-radius: 3px;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
+}
+
+.pay-asset-icon {
+  height: 16px;
+  width: auto;
+  max-width: 28px;
+  object-fit: contain;
+  vertical-align: middle;
+  border-radius: 2px;
+  margin-right: 4px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   SECCIÓN DE PLANES CON BLOQUES DE MINECRAFT (TIER BLOCKS)
+   ══════════════════════════════════════════════════════════════════ */
+.section {
+  padding: 72px 0;
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+}
+
+.section-head {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 36px;
+}
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.section-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Selector de Facturación: Por Ciclo (4 Meses) vs Mensual */
+.billing-switcher-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #080f1a;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px;
+  margin-top: 22px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+}
+
+.btn-bill-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-bill-toggle:hover {
+  color: var(--cyan);
+}
+
+.btn-bill-toggle.active {
+  background: var(--cyan-dark);
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.4);
+}
+
+.billing-pill-save {
+  background: rgba(85, 255, 85, 0.15);
+  border: 1px solid rgba(85, 255, 85, 0.4);
+  color: #55ff55;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.3px;
+}
+
+/* Grid de los 3 Planes */
+.pricing-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.minimal-plan-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  position: relative;
+}
+
+.minimal-plan-card:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 10px 30px rgba(0, 229, 255, 0.1);
+}
+
+.minimal-plan-card.is-popular {
+  border-color: var(--cyan);
+  background: #0d1726;
+  box-shadow: 0 12px 30px rgba(0, 229, 255, 0.18);
+}
+
+.plan-top {
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Icono del Bloque Minecraft */
+.plan-block-icon-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.plan-block-img {
+  width: 36px;
+  height: 36px;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+}
+
+.plan-badge-tag {
+  font-family: var(--font-pixel);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--cyan);
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.3px;
+}
+
+.plan-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.plan-summary-text {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  min-height: 36px;
+  line-height: 1.45;
+}
+
+.plan-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin: 12px 0 0;
+}
+
+.plan-currency {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--cyan);
+}
+
+.plan-amount {
+  font-family: var(--font-mono);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1;
+}
+
+.plan-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.plan-feature-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.plan-feature-row.excluded {
+  color: var(--text-dim);
+  text-decoration: line-through;
+  opacity: 0.45;
+}
+
+.feat-bullet {
+  color: var(--cyan);
+  font-size: 0.75rem;
+  margin-top: 3px;
+}
+
+.feat-bullet.excluded {
+  color: var(--text-dim);
+}
+
+.btn-card-action {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  letter-spacing: 0.2px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-main);
+}
+
+.btn-card-action:hover {
+  background: rgba(0, 229, 255, 0.1);
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.minimal-plan-card.is-popular .btn-card-action {
+  background: var(--cyan-dark);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.minimal-plan-card.is-popular .btn-card-action:hover {
+  background: #0097a7;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.35);
+}
+
+/* Métodos de Pago Strip */
+.payment-methods-footer {
+  margin-top: 28px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.payment-footer-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.payment-chip {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.payment-chip-note {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   CAPACIDADES (01, 02, 03, 04)
+   ══════════════════════════════════════════════════════════════════ */
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.capability-card {
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  transition: var(--transition);
+}
+
+.capability-card:hover {
+  border-color: rgba(0, 229, 255, 0.3);
+}
+
+.capability-number {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--cyan);
+  margin-bottom: 6px;
+}
+
+.capability-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.capability-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   TÉRMINOS Y POLÍTICAS
+   ══════════════════════════════════════════════════════════════════ */
+.policies-tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.policy-tab-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.policy-tab-btn:hover {
+  color: var(--text-main);
+  border-color: var(--cyan);
+}
+
+.policy-tab-btn.active {
+  background: var(--cyan-dark);
+  color: #ffffff;
+  border-color: var(--cyan);
+}
+
+.policy-card-view {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px;
+}
+
+.policy-card-header {
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.policy-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.policy-card-summary {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.policy-clauses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.clause-item h4 {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+  letter-spacing: 0.1px;
+}
+
+.clause-item p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   FAQ ACORDEÓN
+   ══════════════════════════════════════════════════════════════════ */
+.faq-minimal-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  overflow: hidden;
+}
+
+.faq-entry {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-entry:last-child {
+  border-bottom: none;
+}
+
+.faq-trigger {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  letter-spacing: 0.1px;
+  font-weight: 600;
+  color: var(--text-main);
+  transition: var(--transition);
+}
+
+.faq-trigger:hover {
+  background: var(--bg-card-hover);
+}
+
+.faq-icon-arrow {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  transition: transform 0.25s ease;
+}
+
+.faq-entry.is-open .faq-icon-arrow {
+  transform: rotate(180deg);
+  color: var(--cyan);
+}
+
+.faq-body {
+  display: none;
+  padding: 0 18px 14px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.faq-entry.is-open .faq-body {
+  display: block;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   MODAL DE COMPRA / CONTACTO DIRECTO
+   ══════════════════════════════════════════════════════════════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 15, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  width: 100%;
+  max-width: 460px;
+  background: var(--bg-surface);
+  border: 1px solid var(--cyan);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 229, 255, 0.2);
+  padding: 26px;
+  position: relative;
+  transform: scale(0.96) translateY(10px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.is-active .modal-box {
+  transform: scale(1) translateY(0);
+}
+
+.btn-close-modal {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.btn-close-modal:hover {
+  color: var(--text-main);
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.modal-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.modal-plan-summary-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.modal-plan-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.modal-plan-price {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--cyan);
+}
+
+/* Tira de Medios de Pago en Modal */
+.modal-accepted-strip {
+  background: #070d16;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+}
+
+.modal-accepted-title {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  letter-spacing: 0.1px;
+}
+
+.modal-methods-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.m-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-main);
+  letter-spacing: 0.2px;
+}
+
+.m-chip.m-yape {
+  border-color: rgba(116, 34, 132, 0.5);
+  background: rgba(116, 34, 132, 0.12);
+  color: #d8b4fe;
+}
+
+.m-chip.m-plin {
+  border-color: rgba(0, 208, 183, 0.5);
+  background: rgba(0, 208, 183, 0.12);
+  color: #5eead4;
+}
+
+.m-chip.m-paypal {
+  border-color: rgba(0, 121, 193, 0.5);
+  background: rgba(0, 121, 193, 0.12);
+  color: #7dd3fc;
+}
+
+.m-chip.m-banco {
+  border-color: rgba(245, 158, 11, 0.5);
+  background: rgba(245, 158, 11, 0.12);
+  color: #fcd34d;
+}
+
+.channels-list-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.channel-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-main);
+  background: var(--bg-card);
+  margin-bottom: 7px;
+  transition: var(--transition);
+}
+
+.channel-link-card:hover {
+  border-color: var(--cyan);
+  background: rgba(0, 229, 255, 0.08);
+}
+
+.channel-card-left {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.channel-icon {
+  font-size: 1rem;
+  color: var(--cyan);
+}
+
+.channel-title {
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  letter-spacing: 0.1px;
+  font-weight: 700;
+}
+
+.channel-handle {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.channel-arrow {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.modal-copy-footer {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.btn-copy-fast {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.1px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Toast */
+.toast-bar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  background: var(--bg-card);
+  border: 1px solid var(--cyan);
+  color: #ffffff;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 229, 255, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+  z-index: 3000;
+}
+
+.toast-bar.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   WIDGET DE MÚSICA AMBIENTAL (DE MYWEB)
+   ══════════════════════════════════════════════════════════════════ */
+.music-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.music-credit {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cyan);
+  background: rgba(5, 10, 15, 0.85);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  padding: 4px 10px;
+  border-radius: 999px;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+.music-wrapper.is-active .music-credit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.music-btn {
+  width: 40px;
+  height: 40px;
+  background: #0a111a;
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+  transition: var(--transition);
+}
+
+.music-btn:hover {
+  transform: scale(1.08);
+  border-color: var(--cyan);
+  box-shadow: 0 0 16px var(--cyan);
+}
+
+.music-btn.playing {
+  animation: pulseMusic 2s infinite;
+}
+
+@keyframes pulseMusic {
+  0% { box-shadow: 0 0 8px rgba(0, 229, 255, 0.3); }
+  50% { box-shadow: 0 0 18px rgba(0, 229, 255, 0.6); }
+  100% { box-shadow: 0 0 8px rgba(0, 229, 255, 0.3); }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   FOOTER MINIMALISTA
+   ══════════════════════════════════════════════════════════════════ */
+.footer-minimal {
+  padding: 44px 0 24px;
+  border-top: 1px solid var(--border);
+  background: #04080c;
+  font-size: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.footer-col-brand h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+
+.footer-col-brand p {
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 290px;
+}
+
+.footer-col h5 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-links-list a {
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.footer-links-list a:hover {
+  color: var(--cyan);
+}
+
+.footer-bottom-bar {
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-dim);
+  font-size: 0.72rem;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+}
+
+/* Modal Secreto de los 50 Clics */
+.coupon-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 15, 0.9);
+  backdrop-filter: blur(8px);
+  z-index: 3500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+
+.coupon-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.coupon-modal-content {
+  background: var(--bg-surface);
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 30px var(--cyan);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+}
+
+.coupon-modal-title {
+  font-family: var(--font-pixel);
+  font-size: 1.1rem;
+  color: var(--cyan);
+  margin-bottom: 10px;
+}
+
+.coupon-modal-text {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+
+.coupon-modal-btn {
+  background: var(--cyan-dark);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-main-title {
+    font-size: 2.1rem;
+  }
+
+  .note-block-container {
+    display: none;
+  }
+
+  .pixel-sprite {
+    display: none;
+  }
+
+  .pricing-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-main-title {
+    font-size: 1.7rem;
+  }
+
+  .footer-columns {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* ── REPRODUCTOR DE MÚSICA AMBIENTAL (ESTILO MYWEB) ── */
+.music-wrapper {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.music-credit {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--cyan);
+  background: rgba(5, 10, 15, 0.85);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateX(15px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.music-wrapper:hover .music-credit,
+.music-wrapper.is-active .music-credit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.music-btn {
+  position: relative;
+  background: rgba(5, 10, 15, 0.85);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cyan);
+  font-size: 20px;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.music-btn:hover {
+  transform: scale(1.1);
+  border-color: var(--cyan);
+  box-shadow: 0 0 20px var(--cyan-glow);
+}
+
+.music-btn.playing {
+  animation: musicPulse 2s infinite;
+  border-color: rgba(0, 229, 255, 0.7);
+}
+
+@keyframes musicPulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.5); }
+  70% { box-shadow: 0 0 0 12px rgba(0, 229, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
+}
+
+@media (max-width: 600px) {
+  .music-wrapper {
+    bottom: 16px;
+    right: 16px;
+  }
+}
