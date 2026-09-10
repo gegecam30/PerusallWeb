@@ -35,9 +35,9 @@ const CONFIG = Object.freeze({
     whatsapp: {
       enabled: true,
       label: "WhatsApp",
-      handle: "Atención directa",
-      phoneRaw: "934033735",
-      urlBase: "https://wa.me/51934033735",
+      handle: "Grupo Oficial de la Comunidad",
+      urlBase: "https://chat.whatsapp.com/L8FkTKsYhHQ2DMeQOAk0c5",
+      groupInvite: "https://chat.whatsapp.com/L8FkTKsYhHQ2DMeQOAk0c5",
       icon: "fa-brands fa-whatsapp",
       generateMessage: (planName, price) => 
         `Hola, deseo adquirir la licencia del Plan ${planName} (${price}) de Perusall Smart Co-Pilot. Pago mediante Yape/Plin/Transferencia. ¿Me indican los datos para el abono?`

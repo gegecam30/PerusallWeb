@@ -676,9 +676,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (dom.modalLinkWhatsApp) {
       if (CONFIG.contacts.whatsapp && CONFIG.contacts.whatsapp.enabled) {
-        const waMsg = CONFIG.contacts.whatsapp.generateMessage(plan.name, formattedPrice);
+        const waMsg = CONFIG.contacts.whatsapp.generateMessage ? CONFIG.contacts.whatsapp.generateMessage(plan.name, formattedPrice) : '';
         state.copiedText = waMsg;
-        dom.modalLinkWhatsApp.href = `${CONFIG.contacts.whatsapp.urlBase}?text=${encodeURIComponent(waMsg)}`;
+        if (CONFIG.contacts.whatsapp.urlBase.includes('chat.whatsapp.com')) {
+          dom.modalLinkWhatsApp.href = CONFIG.contacts.whatsapp.urlBase;
+        } else {
+          dom.modalLinkWhatsApp.href = `${CONFIG.contacts.whatsapp.urlBase}?text=${encodeURIComponent(waMsg)}`;
+        }
         dom.modalLinkWhatsApp.setAttribute('target', '_blank');
         dom.modalLinkWhatsApp.setAttribute('rel', 'noopener noreferrer');
         dom.modalLinkWhatsApp.style.display = 'flex';
