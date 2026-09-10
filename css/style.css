@@ -588,6 +588,93 @@ body {
   letter-spacing: 0.3px;
 }
 
+/* Canales de Contacto Directo Arriba de Planes */
+.planes-contact-strip {
+  max-width: 860px;
+  margin: 0 auto 32px;
+  background: rgba(10, 17, 27, 0.75);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.planes-contact-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.planes-contact-label i {
+  color: var(--cyan);
+}
+
+.planes-contact-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-contact-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  transition: var(--transition);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-main);
+}
+
+.btn-contact-pill:hover {
+  transform: translateY(-2px);
+}
+
+.btn-contact-pill.pill-whatsapp:hover {
+  border-color: #25d366;
+  color: #25d366;
+  background: rgba(37, 211, 102, 0.1);
+  box-shadow: 0 0 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-contact-pill.pill-telegram:hover {
+  border-color: #229ed9;
+  color: #229ed9;
+  background: rgba(34, 158, 217, 0.1);
+  box-shadow: 0 0 12px rgba(34, 158, 217, 0.3);
+}
+
+.btn-contact-pill.pill-discord:hover {
+  border-color: #5865f2;
+  color: #5865f2;
+  background: rgba(88, 101, 242, 0.1);
+  box-shadow: 0 0 12px rgba(88, 101, 242, 0.3);
+}
+
+.btn-contact-pill.pill-instagram:hover {
+  border-color: #e1306c;
+  color: #e1306c;
+  background: rgba(225, 48, 108, 0.1);
+  box-shadow: 0 0 12px rgba(225, 48, 108, 0.3);
+}
+
 /* Grid de los 3 Planes */
 .pricing-cards-grid {
   display: grid;
@@ -1470,6 +1557,18 @@ body {
     grid-template-columns: 1fr;
     max-width: 420px;
     margin: 0 auto;
+  }
+
+  .planes-contact-strip {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .planes-contact-buttons {
+    justify-content: center;
   }
 
   .capabilities-grid {
