@@ -35,7 +35,7 @@ const CONFIG = Object.freeze({
     whatsapp: {
       enabled: true,
       label: "WhatsApp",
-      handle: "+51 934 033 735",
+      handle: "Atención directa",
       phoneRaw: "934033735",
       urlBase: "https://wa.me/51934033735",
       icon: "fa-brands fa-whatsapp",
