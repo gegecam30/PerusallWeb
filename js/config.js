@@ -12,12 +12,12 @@ const CONFIG = Object.freeze({
   brand: {
     name: "Perusall Smart Co-Pilot",
     shortName: "Co-Pilot",
-    version: "v2.3",
+    version: "v2.4",
     tagline: "Inteligencia para el estudio dialógico",
     chromeStoreUrl: "https://chromewebstore.google.com/detail/perusall-smart-co-pilot/mdjllgchpbdiempomlnhcjbllceeecbf",
     rating: "5.0 / 5.0",
     ratingCount: "1,240+ universitarios",
-    statusText: "Sistemas operativos y compatibles con Perusall v2.3"
+    statusText: "Sistemas operativos y compatibles con Perusall v2.4"
   },
 
   // ── TEXTOS DEL EFECTO DE ENCANTAMIENTO (TYPEWRITER GLITCH) ──
