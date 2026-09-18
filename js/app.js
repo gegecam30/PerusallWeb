@@ -1,6 +1,6 @@
 /**
  * ══════════════════════════════════════════════════════════════════
- * PERUSALL SMART CO-PILOT — APP & SIMULATOR CONTROLLER
+ * PEXREAD — APP & SIMULATOR CONTROLLER
  * ══════════════════════════════════════════════════════════════════
  * Frontend minimalista, desacoplado, seguro contra vulnerabilidades
  * XSS y tabnabbing, con simulador interactivo en tiempo real integrado.
@@ -725,7 +725,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function copyOrderMessage() {
-    const textToCopy = state.copiedText || `Deseo adquirir la licencia de Perusall Smart Co-Pilot.`;
+    const textToCopy = state.copiedText || `Deseo adquirir la licencia de PexRead.`;
     try {
       await navigator.clipboard.writeText(textToCopy);
       showToast('Mensaje de pedido copiado al portapapeles.');

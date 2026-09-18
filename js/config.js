@@ -1,6 +1,6 @@
 /**
  * ══════════════════════════════════════════════════════════════════
- * PERUSALL SMART CO-PILOT — CONFIGURACIÓN GLOBAL MODULAR
+ * PEXREAD — CONFIGURACIÓN GLOBAL MODULAR
  * ══════════════════════════════════════════════════════════════════
  * Diseñado para desacoplar completamente la lógica visual del contenido.
  * Soporta activos de Minecraft (Bloques Tierra, Hierro, Diamante),
@@ -10,14 +10,14 @@
 const CONFIG = Object.freeze({
   // ── INFORMACIÓN DE MARCA ──
   brand: {
-    name: "Perusall Smart Co-Pilot",
-    shortName: "Co-Pilot",
+    name: "PexRead — Smart Reading Co-Pilot",
+    shortName: "PexRead",
     version: "v2.4",
-    tagline: "Inteligencia para el estudio dialógico",
+    tagline: "Inteligencia para el estudio y la lectura dialógica",
     chromeStoreUrl: "https://chromewebstore.google.com/detail/perusall-smart-co-pilot/mdjllgchpbdiempomlnhcjbllceeecbf",
     rating: "5.0 / 5.0",
     ratingCount: "1,240+ universitarios",
-    statusText: "Sistemas operativos y compatibles con Perusall v2.4"
+    statusText: "Sistemas operativos y compatibles v2.4"
   },
 
   // ── TEXTOS DEL EFECTO DE ENCANTAMIENTO (TYPEWRITER GLITCH) ──
@@ -40,7 +40,7 @@ const CONFIG = Object.freeze({
       groupInvite: "https://chat.whatsapp.com/L8FkTKsYhHQ2DMeQOAk0c5",
       icon: "fa-brands fa-whatsapp",
       generateMessage: (planName, price) => 
-        `Hola, deseo adquirir la licencia del Plan ${planName} (${price}) de Perusall Smart Co-Pilot. Pago mediante Yape/Plin/Transferencia. ¿Me indican los datos para el abono?`
+        `Hola, deseo adquirir la licencia del Plan ${planName} (${price}) de PexRead. Pago mediante Yape/Plin/Transferencia. ¿Me indican los datos para el abono?`
     },
     telegram: {
       enabled: true,
@@ -49,7 +49,7 @@ const CONFIG = Object.freeze({
       url: "https://t.me/+kGDzj1dmtOs1MTdh",
       icon: "fa-brands fa-telegram",
       generateMessage: (planName, price) => 
-        `Hola, deseo activar el Plan ${planName} (${price}) de Perusall Smart Co-Pilot vía PayPal o Yape/Plin.`
+        `Hola, deseo activar el Plan ${planName} (${price}) de PexRead vía PayPal o Yape/Plin.`
     },
     discord: {
       enabled: true,
@@ -222,7 +222,7 @@ const CONFIG = Object.freeze({
       sections: [
         {
           heading: "1. Naturaleza del Software",
-          body: "Perusall Smart Co-Pilot es una herramienta de asistencia tecnológica diseñada para apoyar al estudiante en la gestión y análisis de material académico. El usuario conserva la responsabilidad sobre el uso y entrega de sus asignaciones."
+          body: "PexRead es una herramienta de asistencia tecnológica diseñada para apoyar al estudiante en la gestión y análisis de material académico. El usuario conserva la responsabilidad sobre el uso y entrega de sus asignaciones."
         },
         {
           heading: "2. Licenciamiento y Activación",
@@ -264,7 +264,7 @@ const CONFIG = Object.freeze({
         },
         {
           heading: "2. Independencia Institucional",
-          body: "Perusall Smart Co-Pilot es un desarrollo independiente de ingeniería de software y no guarda afiliación ni patrocinio formal con Perusall LLC ni con ninguna universidad específica."
+          body: "PexRead es un desarrollo independiente de ingeniería de software y no guarda afiliación ni patrocinio formal con plataformas de terceros ni con ninguna universidad específica."
         }
       ]
     }
